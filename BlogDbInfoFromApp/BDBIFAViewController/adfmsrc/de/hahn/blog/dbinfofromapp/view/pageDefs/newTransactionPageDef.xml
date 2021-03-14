@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="newTransactionPageDef"
+                Package="de.hahn.blog.dbinfofromapp.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="getApplicationName_return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getApplicationName.result}"/>
+    </variableIterator>
+    <iterator Binds="RegionsView1" RangeSize="25" DataControl="BDBIFAAppModuleDataControl" id="RegionsView1Iterator"/>
+    <taskFlow id="empNewTransactionTaskFlow1"
+              taskFlowId="/WEB-INF/empNewTransactionTaskFlow.xml#empNewTransactionTaskFlow" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RegionsView1Iterator" id="RegionsView1">
+      <nodeDefinition DefName="de.hahn.blog.dbinfofromapp.model.adfbc.views.RegionsView" Name="RegionsView10">
+        <AttrNames>
+          <Item Value="RegionId"/>
+          <Item Value="RegionName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="getApplicationName" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getApplicationName" IsViewObjectMethod="false" DataControl="BDBIFAAppModuleDataControl"
+                  InstanceName="bindings.getApplicationName.dataControl.dataProvider"
+                  ReturnName="data.BDBIFAAppModuleDataControl.methodResults.getApplicationName_getApplicationName_dataControl_dataProvider_getApplicationName_result"/>
+    <attributeValues IterBinding="variables" id="return">
+      <AttrNames>
+        <Item Value="getApplicationName_return"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

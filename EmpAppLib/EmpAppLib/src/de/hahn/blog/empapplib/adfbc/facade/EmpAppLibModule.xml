@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmpAppLibModule"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModuleImpl"
+  ComponentInterface="de.hahn.blog.empapplib.adfbc.facade.common.EmpAppLibModule">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_superClassName" Value="de.hahn.blog.baseclasses.model.adfbc.facade.BaseApplicationModule"/>
+  </DesignTime>
+  <ViewUsage
+    Name="EmployeesView1"
+    ViewObjectName="de.hahn.blog.empapplib.adfbc.views.EmployeesView"/>
+  <ViewUsage
+    Name="JobHistoryView1"
+    ViewObjectName="de.hahn.blog.empapplib.adfbc.views.JobHistoryView"/>
+  <ViewUsage
+    Name="JobsView1"
+    ViewObjectName="de.hahn.blog.empapplib.adfbc.views.JobsView"/>
+  <ViewUsage
+    Name="EmployeesView2"
+    ViewObjectName="de.hahn.blog.empapplib.adfbc.views.EmployeesView"/>
+  <ViewUsage
+    Name="EmployeesView3"
+    ViewObjectName="de.hahn.blog.empapplib.adfbc.views.EmployeesView"/>
+  <ViewUsage
+    Name="JobHistoryView2"
+    ViewObjectName="de.hahn.blog.empapplib.adfbc.views.JobHistoryView"/>
+  <ViewUsage
+    Name="JobHistoryView3"
+    ViewObjectName="de.hahn.blog.empapplib.adfbc.views.JobHistoryView"/>
+  <ViewLinkUsage
+    Name="EmpManagerFkLink1"
+    ViewLinkObjectName="de.hahn.blog.empapplib.adfbc.views.links.EmpManagerFkLink"
+    SrcViewUsageName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule.EmployeesView1"
+    DstViewUsageName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule.EmployeesView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="EmpJobFkLink1"
+    ViewLinkObjectName="de.hahn.blog.empapplib.adfbc.views.links.EmpJobFkLink"
+    SrcViewUsageName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule.JobsView1"
+    DstViewUsageName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule.EmployeesView3"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="JhistEmpFkLink1"
+    ViewLinkObjectName="de.hahn.blog.empapplib.adfbc.views.links.JhistEmpFkLink"
+    SrcViewUsageName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule.EmployeesView1"
+    DstViewUsageName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule.JobHistoryView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="JhistJobFkLink1"
+    ViewLinkObjectName="de.hahn.blog.empapplib.adfbc.views.links.JhistJobFkLink"
+    SrcViewUsageName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule.JobsView1"
+    DstViewUsageName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule.JobHistoryView3"
+    Reversed="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="getApplicationName"
+      MethodName="getApplicationName">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

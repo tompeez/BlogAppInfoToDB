@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="newTransaction.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pglNT">
+                <af:gridRow height="50px" id="gr1">
+                    <af:gridCell width="50%" halign="start" valign="top" id="gc1">
+                        <!-- Header -->
+                        <af:outputText value="DB Info App: New Transaction" id="ot1"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr2">
+                    <af:gridCell width="50%" halign="start" valign="top" id="gc2">
+                        <af:panelGroupLayout id="pgl1">
+                            <af:button actionListener="#{bindings.getApplicationName.execute}"
+                                       text="Application Module Name" disabled="#{!bindings.getApplicationName.enabled}"
+                                       id="b1"/>
+                            <af:panelLabelAndMessage label="ApplicationModule name:" id="plam1" partialTriggers="b1">
+                                <af:outputText value="#{bindings.return.inputValue}"
+                                               shortDesc="#{bindings.return.hints.tooltip}" id="ot2"/>
+                            </af:panelLabelAndMessage>
+                        </af:panelGroupLayout>
+                        <af:table value="#{bindings.RegionsView1.collectionModel}" var="row"
+                                  rows="#{bindings.RegionsView1.rangeSize}"
+                                  emptyText="#{bindings.RegionsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.RegionsView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.RegionsView1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.RegionsView1.rangeSize}" id="t1">
+                            <af:column headerText="#{bindings.RegionsView1.hints.RegionId.label}" id="c1">
+                                <af:outputText value="#{row.RegionId}"
+                                               shortDesc="#{bindings.RegionsView1.hints.RegionId.tooltip}" id="ot4">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.RegionsView1.hints.RegionId.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.RegionsView1.hints.RegionName.label}" id="c2">
+                                <af:outputText value="#{row.RegionName}"
+                                               shortDesc="#{bindings.RegionsView1.hints.RegionName.tooltip}" id="ot3"/>
+                            </af:column>
+                        </af:table>
+                    </af:gridCell>
+                    <af:gridCell id="gc3" width="50%">
+                        <af:region value="#{bindings.empNewTransactionTaskFlow1.regionModel}" id="r1"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>

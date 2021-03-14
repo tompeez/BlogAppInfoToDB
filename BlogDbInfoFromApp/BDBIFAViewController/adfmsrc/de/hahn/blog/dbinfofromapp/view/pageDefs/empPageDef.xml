@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="empPageDef"
+                Package="de.hahn.blog.dbinfofromapp.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="getApplicationName_return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getApplicationName.result}"/>
+    </variableIterator>
+    <iterator Binds="EmpAppLibModule1.EmployeesView1" DataControl="BDBIFAAppModuleDataControl" RangeSize="25"
+              id="EmployeesView1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getApplicationName" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getApplicationName" IsViewObjectMethod="false" DataControl="BDBIFAAppModuleDataControl"
+                  InstanceName="bindings.getApplicationName.dataControl.dataProvider.EmpAppLibModule1"
+                  ReturnName="data.BDBIFAAppModuleDataControl.methodResults.getApplicationName_getApplicationName_dataControl_dataProvider_EmpAppLibModule1_getApplicationName_result"/>
+    <attributeValues IterBinding="variables" id="return">
+      <AttrNames>
+        <Item Value="getApplicationName_return"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="EmployeesView1Iterator" id="EmployeesView1">
+      <nodeDefinition DefName="de.hahn.blog.empapplib.adfbc.views.EmployeesView" Name="EmployeesView10">
+        <AttrNames>
+          <Item Value="EmployeeId"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="Email"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

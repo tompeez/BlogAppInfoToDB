@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="indexPageDef"
+                Package="de.hahn.blog.dbinfofromapp.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="getApplicationName_return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.getApplicationName.result}"/>
+    </variableIterator>
+    <iterator Binds="CountriesView1" RangeSize="25" DataControl="BDBIFAAppModuleDataControl"
+              id="CountriesView1Iterator"/>
+    <taskFlow id="empTaskFlow1" taskFlowId="/WEB-INF/empTaskFlow.xml#empTaskFlow" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="EmpRootTaskFlow1" taskFlowId="/WEB-INF/EmpRootTaskFlow.xml#EmpRootTaskFlow" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <methodAction id="getApplicationName" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getApplicationName" IsViewObjectMethod="false" DataControl="BDBIFAAppModuleDataControl"
+                  InstanceName="bindings.getApplicationName.dataControl.dataProvider"
+                  ReturnName="data.BDBIFAAppModuleDataControl.methodResults.getApplicationName_getApplicationName_dataControl_dataProvider_getApplicationName_result"/>
+    <attributeValues IterBinding="variables" id="return">
+      <AttrNames>
+        <Item Value="getApplicationName_return"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CountriesView1Iterator" id="CountriesView1">
+      <nodeDefinition DefName="de.hahn.blog.dbinfofromapp.model.adfbc.views.CountriesView" Name="CountriesView10">
+        <AttrNames>
+          <Item Value="CountryId"/>
+          <Item Value="CountryName"/>
+          <Item Value="RegionId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

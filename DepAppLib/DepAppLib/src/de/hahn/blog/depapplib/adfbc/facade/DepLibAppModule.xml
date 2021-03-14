@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DepLibAppModule"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="de.hahn.blog.depapplib.adfbc.facade.DepLibAppModuleImpl"
+  ComponentInterface="de.hahn.blog.depapplib.adfbc.facade.common.DepLibAppModule">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_superClassName" Value="de.hahn.blog.baseclasses.model.adfbc.facade.BaseApplicationModuleImpl"/>
+  </DesignTime>
+  <ViewUsage
+    Name="DepartmentsView1"
+    ViewObjectName="de.hahn.blog.depapplib.adfbc.views.DepartmentsView"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="getApplicationName"
+      MethodName="getApplicationName">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

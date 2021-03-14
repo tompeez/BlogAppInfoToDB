@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="index.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1" styleClass="AFStretchWidth">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="33%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                        <af:outputText value="DB Info From Application" id="ot1" inlineStyle="font-size:x-large;"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="33%" halign="start" valign="top" id="gc1">
+                        <af:panelGroupLayout id="pgl2" layout="vertical">
+                            <af:button actionListener="#{bindings.getApplicationName.execute}"
+                                       text="Application Module Name" disabled="#{!bindings.getApplicationName.enabled}"
+                                       id="b1"/>
+                            <af:panelLabelAndMessage label="ApplicationModule name:" id="plam1" partialTriggers="b1">
+                                <af:outputText value="#{bindings.return.inputValue}"
+                                               shortDesc="#{bindings.return.hints.tooltip}" id="ot2"/>
+                            </af:panelLabelAndMessage>
+                            <af:table value="#{bindings.CountriesView1.collectionModel}" var="row"
+                                      rows="#{bindings.CountriesView1.rangeSize}"
+                                      emptyText="#{bindings.CountriesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0"
+                                      selectedRowKeys="#{bindings.CountriesView1.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.CountriesView1.collectionModel.makeCurrent}"
+                                      rowSelection="single" fetchSize="#{bindings.CountriesView1.rangeSize}" id="t1">
+                                <af:column headerText="#{bindings.CountriesView1.hints.CountryId.label}" id="c1">
+                                    <af:outputText value="#{row.CountryId}"
+                                                   shortDesc="#{bindings.CountriesView1.hints.CountryId.tooltip}"
+                                                   id="ot3"/>
+                                </af:column>
+                                <af:column headerText="#{bindings.CountriesView1.hints.CountryName.label}" id="c2">
+                                    <af:outputText value="#{row.CountryName}"
+                                                   shortDesc="#{bindings.CountriesView1.hints.CountryName.tooltip}"
+                                                   id="ot4"/>
+                                </af:column>
+                                <af:column headerText="#{bindings.CountriesView1.hints.RegionId.label}" id="c3">
+                                    <af:outputText value="#{row.RegionId}"
+                                                   shortDesc="#{bindings.CountriesView1.hints.RegionId.tooltip}"
+                                                   id="ot5">
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.CountriesView1.hints.RegionId.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                            </af:table>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                    <af:gridCell id="gc3" width="33%">
+                        <af:region value="#{bindings.empTaskFlow1.regionModel}" id="r1"/>
+                    </af:gridCell>
+                    <af:gridCell id="gc4" width="33%">
+                        <af:region value="#{bindings.EmpRootTaskFlow1.regionModel}" id="r2"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>

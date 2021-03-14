@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BDBIFAAppModule"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="de.hahn.blog.dbinfofromapp.model.adfbc.facade.BDBIFAAppModuleImpl"
+  ComponentInterface="de.hahn.blog.dbinfofromapp.model.adfbc.facade.common.BDBIFAAppModule">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_superClassName" Value="de.hahn.blog.baseclasses.model.adfbc.facade.BaseApplicationModuleImpl"/>
+  </DesignTime>
+  <ViewUsage
+    Name="CountriesView1"
+    ViewObjectName="de.hahn.blog.dbinfofromapp.model.adfbc.views.CountriesView"/>
+  <ViewUsage
+    Name="LocationsView1"
+    ViewObjectName="de.hahn.blog.dbinfofromapp.model.adfbc.views.LocationsView"/>
+  <ViewUsage
+    Name="RegionsView1"
+    ViewObjectName="de.hahn.blog.dbinfofromapp.model.adfbc.views.RegionsView"/>
+  <ViewUsage
+    Name="CountriesView2"
+    ViewObjectName="de.hahn.blog.dbinfofromapp.model.adfbc.views.CountriesView"/>
+  <ViewUsage
+    Name="LocationsView2"
+    ViewObjectName="de.hahn.blog.dbinfofromapp.model.adfbc.views.LocationsView"/>
+  <ViewLinkUsage
+    Name="CountrRegFkLink1"
+    ViewLinkObjectName="de.hahn.blog.dbinfofromapp.model.adfbc.views.links.CountrRegFkLink"
+    SrcViewUsageName="de.hahn.blog.dbinfofromapp.model.adfbc.facade.BDBIFAAppModule.RegionsView1"
+    DstViewUsageName="de.hahn.blog.dbinfofromapp.model.adfbc.facade.BDBIFAAppModule.CountriesView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="LocCIdFkLink1"
+    ViewLinkObjectName="de.hahn.blog.dbinfofromapp.model.adfbc.views.links.LocCIdFkLink"
+    SrcViewUsageName="de.hahn.blog.dbinfofromapp.model.adfbc.facade.BDBIFAAppModule.CountriesView1"
+    DstViewUsageName="de.hahn.blog.dbinfofromapp.model.adfbc.facade.BDBIFAAppModule.LocationsView2"
+    Reversed="false"/>
+  <AppModuleUsage
+    Name="EmpAppLibModule1"
+    FullName="de.hahn.blog.empapplib.adfbc.facade.EmpAppLibModule"
+    SharedScope="0"/>
+  <AppModuleUsage
+    Name="DepLibAppModule1"
+    FullName="de.hahn.blog.depapplib.adfbc.facade.DepLibAppModule"
+    SharedScope="0"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="getApplicationName"
+      MethodName="getApplicationName">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

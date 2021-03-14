@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.22.48" id="DataBindings"
+             SeparateXMLFiles="false" Package="de.hahn.blog.dbinfofromapp.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/index.jsf" usageId="de_hahn_blog_dbinfofromapp_view_indexPageDef"/>
+    <page path="/emp.jsff" usageId="de_hahn_blog_dbinfofromapp_view_empPageDef"/>
+    <page path="/empRoot.jsff" usageId="de_hahn_blog_dbinfofromapp_view_empRootPageDef"/>
+    <page path="/newTransaction.jsf" usageId="de_hahn_blog_dbinfofromapp_view_newTransactionPageDef"/>
+    <page path="/empNewTrans.jsff" usageId="de_hahn_blog_dbinfofromapp_view_empNewTransPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="de_hahn_blog_dbinfofromapp_view_indexPageDef"
+          path="de.hahn.blog.dbinfofromapp.view.pageDefs.indexPageDef"/>
+    <page id="de_hahn_blog_dbinfofromapp_view_empPageDef" path="de.hahn.blog.dbinfofromapp.view.pageDefs.empPageDef"/>
+    <page id="de_hahn_blog_dbinfofromapp_view_empRootPageDef"
+          path="de.hahn.blog.dbinfofromapp.view.pageDefs.empRootPageDef"/>
+    <page id="de_hahn_blog_dbinfofromapp_view_newTransactionPageDef"
+          path="de.hahn.blog.dbinfofromapp.view.pageDefs.newTransactionPageDef"/>
+    <page id="de_hahn_blog_dbinfofromapp_view_empNewTransPageDef"
+          path="de.hahn.blog.dbinfofromapp.view.pageDefs.empNewTransPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="BDBIFAAppModuleDataControl" Package="de.hahn.blog.dbinfofromapp.model.adfbc.facade"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="BDBIFAAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="EmpAppLibModuleDataControl" Package="de.hahn.blog.empapplib.adfbc.facade"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="EmpAppLibModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

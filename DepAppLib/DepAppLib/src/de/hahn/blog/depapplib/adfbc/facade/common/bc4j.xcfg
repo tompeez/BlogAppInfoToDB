@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="de.hahn.blog.depapplib.adfbc.facade.DepLibAppModule">
+    <AppModuleConfig name="DepLibAppModuleLocal" jbo.project="de.hahn.blog.depapplib.DepAppLib"
+                     ApplicationName="de.hahn.blog.depapplib.adfbc.facade.DepLibAppModule" DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/HRDS"/>
+      <Security AppModuleJndiName="de.hahn.blog.depapplib.adfbc.facade.DepLibAppModule"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="DepLibAppModuleShared" jbo.project="de.hahn.blog.depapplib.DepAppLib"
+                     ApplicationName="de.hahn.blog.depapplib.adfbc.facade.DepLibAppModule" DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/HRDS"/>
+      <Security AppModuleJndiName="de.hahn.blog.depapplib.adfbc.facade.DepLibAppModule"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>
