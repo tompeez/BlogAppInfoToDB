@@ -26,7 +26,7 @@ public class BaseApplicationModuleImpl extends ApplicationModuleImpl {
         if (isRoot()) {
             String user = getUserPrincipalName();
             if (user == null) {
-                // if no security given, we user annonymous as username
+                // if no security given, we user anonymous as username
                 user = "anonymous";
             }
 
