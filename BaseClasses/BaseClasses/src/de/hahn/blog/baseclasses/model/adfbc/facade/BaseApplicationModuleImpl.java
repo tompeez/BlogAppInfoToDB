@@ -85,9 +85,6 @@ public class BaseApplicationModuleImpl extends ApplicationModuleImpl {
             String name = this.getClass().getSimpleName() + " id: " + this.getDBTransaction()
                                                                           .toString()
                                                                           .split("@")[1];
-            if (isRoot()) {
-                name += " (ROOT)";
-            }
             return name;
         } catch (Exception ex) {
             return "n/a";
